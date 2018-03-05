@@ -11,7 +11,7 @@ using namespace g3rb3n;
 
 Thing thing;
 BlinkPattern led(BUILTIN_LED);
-MAX44009 sensor;
+MAX44009 sensor(0,2);
 
 BlinkPattern::Pattern<2> panic{{1,1},25};
 BlinkPattern::Pattern<2> start{{1,9},25};
