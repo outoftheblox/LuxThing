@@ -4,7 +4,7 @@
 #include <Arduino.h>
 #include "Wire.h"
 
-using namespace g3rb3n;
+using namespace ootb;
 
 #define ON 0
 #define OFF 1
@@ -13,9 +13,7 @@ Thing thing;
 BlinkPattern led(BUILTIN_LED);
 MAX44009 sensor(0,2);
 
-BlinkPattern::Pattern<2> panic{{1,1},25};
 BlinkPattern::Pattern<2> start{{1,9},25};
-BlinkPattern::Pattern<2> normal{{1,39},25};
 BlinkPattern::Pattern<0> disable{{},1000};
 
 void setup()
@@ -32,7 +30,7 @@ void setup()
 
   thing.begin();
 
-  thing.addSensor(thing.clientId() + "/max44009/lux", 1000, [](Value& value){
+  thing.addSensor("max44009/lux/" + thing.clientId(), 1000, [](Value& value){
     digitalWrite(BUILTIN_LED, ON);
     float lux = sensor.lux();
     Serial.println(lux);

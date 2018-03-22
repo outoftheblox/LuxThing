@@ -1,2 +1,2 @@
-# WeightThing
-A HX711 thing for weighing things.
+# LuxThing
+A lux sensor based on the MAX44009 which communicates over secure MQTT.
