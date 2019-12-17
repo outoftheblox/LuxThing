@@ -30,7 +30,7 @@ void setup()
 
   thing.begin();
 
-  thing.addSensor("max44009/lux/" + thing.clientId(), 1000, [](Value& value){
+  thing.addSensor(thing.clientId() + "/max44009/lux", 1000, [](Value& value){
     digitalWrite(BUILTIN_LED, ON);
     float lux = sensor.lux();
     Serial.println(lux);
