@@ -2,6 +2,7 @@
 #include <BlinkPattern.h>
 #include "MAX44009.h"
 #include <Arduino.h>
+#include <string.h>
 #include "Wire.h"
 
 using namespace ootb;
@@ -29,8 +30,8 @@ void setup()
   });
 
   thing.begin();
-
-  thing.addSensor(thing.clientId() + "/max44009/lux", 1000, [](Value& value){
+  String topic = "things/" + thing.clientId() + "/max44009/lux";
+  thing.addSensor(topic, 1000, [](Value& value){
     digitalWrite(BUILTIN_LED, ON);
     float lux = sensor.lux();
     Serial.println(lux);
